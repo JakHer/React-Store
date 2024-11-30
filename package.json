@@ -22,7 +22,8 @@
     "format": "prettier --write 'src/**/*.{ts,tsx,json,css,md}'",
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "prepare": "husky"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +44,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^18.19.67",
     "@types/react": "^18.3.12",
