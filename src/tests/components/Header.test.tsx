@@ -1,11 +1,64 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import {
+  BrowserRouter,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
+import { Home } from "../../pages/Home";
+import { Store } from "../../pages/Store";
 import { Header } from "../../components/Header";
 
-describe("App Component", () => {
-  test("Renders Header", () => {
-    render(<Header />);
+const renderHeader = () => {
+  render(
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/store" element={<Store />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-    const welcomeMessage = screen.getByText(/Welcome to Your React Store/i);
-    expect(welcomeMessage).toBeInTheDocument();
+describe("Header Component", () => {
+  test("Renders the Home link and navigates correctly", () => {
+    renderHeader();
+
+    const homeLink = screen.getByTestId("home-link");
+    expect(homeLink).toBeInTheDocument();
+    expect(homeLink).toHaveTextContent("Home");
+
+    fireEvent.click(homeLink);
+
+    expect(screen.getByTestId("welcome-heading")).toBeInTheDocument();
+  });
+
+  test("Renders the Store link and navigates correctly", () => {
+    renderHeader();
+
+    const storeLink = screen.getByTestId("store-link");
+    expect(storeLink).toBeInTheDocument();
+    expect(storeLink).toHaveTextContent("Store");
+
+    fireEvent.click(storeLink);
+
+    expect(screen.getByText(/Store Page/i)).toBeInTheDocument(); // Replace with actual content from Store page
+  });
+
+  test("Renders the navigation logo", () => {
+    renderHeader();
+
+    const logo = screen.getByText(/MyReactStore/i);
+    expect(logo).toBeInTheDocument();
+  });
+
+  test("Header has appropriate classes", () => {
+    renderHeader();
+
+    const headerElement = screen.getByRole("banner"); // You can also use the specific element that wraps the header if needed
+    expect(headerElement).toHaveClass(
+      "w-full bg-transparent border-b border-gray-300 shadow-sm relative"
+    );
   });
 });
