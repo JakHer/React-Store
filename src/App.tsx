@@ -1,14 +1,14 @@
-import { Route, Routes, useLocation } from "react-router-dom";
-import { Header } from "./components/Header";
-import { Home } from "./pages/Home";
-import { Store } from "./pages/Store";
-import { AnimatePresence, motion } from "framer-motion";
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { Header } from './components/Header';
+import { Home } from './pages/Home';
+import { Store } from './pages/Store';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const pageTransition = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
   exit: { opacity: 1 },
-  transition: { duration: 0.5, ease: "easeInOut" },
+  transition: { duration: 0.5, ease: 'easeInOut' },
 };
 
 const App = () => {
