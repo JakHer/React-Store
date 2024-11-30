@@ -1,23 +1,42 @@
-import { render, screen } from "@testing-library/react";
-import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { BrowserRouter as Router } from "react-router-dom";
 import App from "../App";
 
-describe("App Component", () => {
-  test("full app rendering/navigating", async () => {
-    render(<App />, { wrapper: BrowserRouter });
+const renderApp = () => {
+  render(
+    <Router>
+      <App />
+    </Router>
+  );
+};
 
-    expect(screen.getByText(/Home Page/i)).toBeInTheDocument();
+describe("App Component", () => {
+  test("Navigates to Store page when clicking 'Store' link", async () => {
+    renderApp();
+
+    const storeLink = screen.getByTestId("store-link");
+
+    fireEvent.click(storeLink);
+    expect(screen.getByTestId("store-container")).toBeInTheDocument();
   });
 
-  test("rendering a component that uses useLocation", () => {
-    const storeRoute = "/store";
+  test("Navigates to Home page when clicking 'Home' link", async () => {
+    renderApp();
 
-    render(
-      <MemoryRouter initialEntries={[storeRoute]}>
-        <App />
-      </MemoryRouter>
-    );
+    const homeLink = screen.getByTestId("home-link");
 
-    expect(screen.getByText(/Store Page/i)).toBeInTheDocument();
+    fireEvent.click(homeLink);
+
+    expect(screen.getByTestId("home-container")).toBeInTheDocument();
+  });
+
+  test("Renders the Header component", () => {
+    renderApp();
+
+    const appContainer = screen.getByTestId("app-container");
+    expect(appContainer).toBeInTheDocument();
+
+    const pageTransition = screen.getByTestId("page-transition");
+    expect(pageTransition).toBeInTheDocument();
   });
 });
