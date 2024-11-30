@@ -1,4 +1,4 @@
-name: Run Tests and Linting
+name: Run Tests, Linting, and Build
 
 on:
   pull_request:
@@ -21,18 +21,20 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22.11.0'
+          node-version: '22.11.0' # Using the specified Node.js version
 
       - name: Cache Node.js modules
         uses: actions/cache@v3
         with:
-          path: node_modules
+          path: |
+            node_modules
+            .vite
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-modules-
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run ESLint
         run: npm run lint
@@ -53,13 +55,49 @@ jobs:
       - name: Cache Node.js modules
         uses: actions/cache@v3
         with:
-          path: node_modules
+          path: |
+            node_modules
+            .vite
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-modules-
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run Tests
         run: npm test
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test  # Ensures build runs only after tests pass
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.11.0'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            .vite
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build with React-Scripts
+        if: ${{ !env.USE_VITE }}
+        run: npm run build
+
+      - name: Build with Vite
+        if: ${{ env.USE_VITE }}
+        run: npm run build-vite
