@@ -1,23 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { AnimatedSectionProps, FeatureCardProps } from "./types";
-
-const AnimatedSection: React.FC<AnimatedSectionProps> = ({
-  children,
-  className = "",
-  delay = 0,
-  ...props
-}) => (
-  <motion.section
-    className={`py-20 px-6 md:px-12 ${className}`}
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.8, delay }}
-    {...props}
-  >
-    {children}
-  </motion.section>
-);
+import { FeatureCardProps } from "./types";
+import { AnimatedSection } from "../components/AnimatedSection";
 
 const FeatureCard: React.FC<FeatureCardProps> = ({
   title,
