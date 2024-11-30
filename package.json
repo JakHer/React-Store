@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" \"components/**/*.{ts,tsx}\"",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write 'src/**/*.{ts,tsx,json,css,md}'"
   },
