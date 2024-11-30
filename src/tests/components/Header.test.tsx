@@ -1,13 +1,8 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import {
-  BrowserRouter,
-  Route,
-  BrowserRouter as Router,
-  Routes,
-} from "react-router-dom";
-import { Home } from "../../pages/Home";
-import { Store } from "../../pages/Store";
-import { Header } from "../../components/Header";
+import { render, screen, fireEvent } from '@testing-library/react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Home } from '../../pages/Home';
+import { Store } from '../../pages/Store';
+import { Header } from '../../components/Header';
 
 const renderHeader = () => {
   render(
@@ -21,44 +16,44 @@ const renderHeader = () => {
   );
 };
 
-describe("Header Component", () => {
-  test("Renders the Home link and navigates correctly", () => {
+describe('Header Component', () => {
+  test('Renders the Home link and navigates correctly', () => {
     renderHeader();
 
-    const homeLink = screen.getByTestId("home-link");
+    const homeLink = screen.getByTestId('home-link');
     expect(homeLink).toBeInTheDocument();
-    expect(homeLink).toHaveTextContent("Home");
+    expect(homeLink).toHaveTextContent('Home');
 
     fireEvent.click(homeLink);
 
-    expect(screen.getByTestId("welcome-heading")).toBeInTheDocument();
+    expect(screen.getByTestId('welcome-heading')).toBeInTheDocument();
   });
 
-  test("Renders the Store link and navigates correctly", () => {
+  test('Renders the Store link and navigates correctly', () => {
     renderHeader();
 
-    const storeLink = screen.getByTestId("store-link");
+    const storeLink = screen.getByTestId('store-link');
     expect(storeLink).toBeInTheDocument();
-    expect(storeLink).toHaveTextContent("Store");
+    expect(storeLink).toHaveTextContent('Store');
 
     fireEvent.click(storeLink);
 
     expect(screen.getByText(/Store Page/i)).toBeInTheDocument(); // Replace with actual content from Store page
   });
 
-  test("Renders the navigation logo", () => {
+  test('Renders the navigation logo', () => {
     renderHeader();
 
     const logo = screen.getByText(/MyReactStore/i);
     expect(logo).toBeInTheDocument();
   });
 
-  test("Header has appropriate classes", () => {
+  test('Header has appropriate classes', () => {
     renderHeader();
 
-    const headerElement = screen.getByRole("banner"); // You can also use the specific element that wraps the header if needed
+    const headerElement = screen.getByRole('banner'); // You can also use the specific element that wraps the header if needed
     expect(headerElement).toHaveClass(
-      "w-full bg-transparent border-b border-gray-300 shadow-sm relative"
+      'w-full bg-transparent border-b border-gray-300 shadow-sm relative'
     );
   });
 });

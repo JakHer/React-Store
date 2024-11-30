@@ -1,9 +1,9 @@
-import { AnimatedSectionProps } from "../pages/types";
-import { motion } from "framer-motion";
+import { AnimatedSectionProps } from '../pages/types';
+import { motion } from 'framer-motion';
 
 export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   children,
-  className = "",
+  className = '',
   delay = 0,
   ...props
 }) => (

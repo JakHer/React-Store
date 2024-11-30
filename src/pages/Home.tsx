@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { AnimatedSection } from "../components/AnimatedSection";
-import { FeatureCard } from "../components/FeatureCard";
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { AnimatedSection } from '../components/AnimatedSection';
+import { FeatureCard } from '../components/FeatureCard';
 
 export const Home: React.FC = () => {
   return (
@@ -14,7 +14,7 @@ export const Home: React.FC = () => {
           className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4"
           initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
           data-testid="hero-heading"
         >
           Welcome to My React Store
