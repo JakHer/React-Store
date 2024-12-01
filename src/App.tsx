@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { Home } from './pages/Home';
 import { Store } from './pages/Store';
 import { AnimatePresence, motion } from 'framer-motion';
+import { NotFound } from './pages/NotFound';
 
 const pageTransition = {
   initial: { opacity: 0 },
@@ -30,6 +31,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/store" element={<Store />} />
+
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </motion.div>
       </AnimatePresence>
