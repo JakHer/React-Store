@@ -1,10 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { MenuLink } from './MenuLink';
-
-interface HamburgerMenuProps {
-  menuOpen: boolean;
-  toggleMenu: () => void;
-}
+import { HamburgerMenuProps } from '../types/types';
 
 export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
   menuOpen,

@@ -1,5 +1,5 @@
-import { FeatureCardProps } from '../pages/types';
 import { motion } from 'framer-motion';
+import { FeatureCardProps } from '../types/types';
 
 export const FeatureCard: React.FC<FeatureCardProps> = ({
   title,
