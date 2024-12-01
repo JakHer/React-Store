@@ -1,10 +1,5 @@
 import { motion } from 'framer-motion';
-
-interface ProductCardProps {
-  name: string;
-  description: string;
-  price: number;
-}
+import { ProductCardProps } from '../types/types';
 
 export const ProductCard: React.FC<ProductCardProps> = ({
   name,

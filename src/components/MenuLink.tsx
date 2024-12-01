@@ -1,11 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-
-interface MenuLinkProps {
-  to: string;
-  text: string;
-  mobile?: boolean;
-  onClick?: () => void;
-}
+import { MenuLinkProps } from '../types/types';
 
 export const MenuLink: React.FC<MenuLinkProps> = ({
   to,
