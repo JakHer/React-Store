@@ -38,7 +38,7 @@ describe('Header Component', () => {
 
     fireEvent.click(storeLink);
 
-    expect(screen.getByText(/Store Page/i)).toBeInTheDocument(); // Replace with actual content from Store page
+    expect(screen.getByTestId('products-container')).toBeInTheDocument();
   });
 
   test('Renders the navigation logo', () => {
@@ -51,7 +51,7 @@ describe('Header Component', () => {
   test('Header has appropriate classes', () => {
     renderHeader();
 
-    const headerElement = screen.getByRole('banner'); // You can also use the specific element that wraps the header if needed
+    const headerElement = screen.getByRole('banner');
     expect(headerElement).toHaveClass(
       'w-full bg-transparent border-b border-gray-300 shadow-sm relative'
     );

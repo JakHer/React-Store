@@ -17,7 +17,7 @@ describe('App Component', () => {
     const storeLink = screen.getByTestId('store-link');
 
     fireEvent.click(storeLink);
-    expect(screen.getByTestId('store-container')).toBeInTheDocument();
+    expect(screen.getByTestId('products-container')).toBeInTheDocument();
   });
 
   test("Navigates to Home page when clicking 'Home' link", async () => {
