@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom'; // Import BrowserRouter for routing
-import { NotFound } from '../../pages/NotFound'; // Adjust the import path as needed
+import { BrowserRouter } from 'react-router-dom';
+import { NotFound } from '../../pages/NotFound';
 
 describe('NotFound Component', () => {
   test('Renders the 404 text correctly', () => {
@@ -51,7 +51,6 @@ describe('NotFound Component', () => {
     const goHomeButton = screen.getByTestId('go-home-button');
     fireEvent.click(goHomeButton);
 
-    // After clicking, the URL should be the home page
     expect(window.location.pathname).toBe('/');
   });
 });

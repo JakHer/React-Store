@@ -8,7 +8,6 @@ export const NotFound: React.FC = () => {
       data-testid="not-found-container"
     >
       <div className="space-y-6">
-        {/* Big 404 Text */}
         <h1
           className="text-7xl font-extrabold text-gray-800"
           data-testid="not-found-heading"
@@ -21,7 +20,6 @@ export const NotFound: React.FC = () => {
         >
           Oops! The page you’re looking for doesn’t exist.
         </p>
-        {/* Go Back Button */}
         <div>
           <Link
             to="/"
