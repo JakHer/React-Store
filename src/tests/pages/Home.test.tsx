@@ -42,7 +42,7 @@ describe('Home Component', () => {
 
     fireEvent.click(shopNowButton);
 
-    const storeContainer = screen.getByTestId('store-container');
+    const storeContainer = screen.getByTestId('products-container');
     expect(storeContainer).toBeInTheDocument();
   });
 
