@@ -18,7 +18,7 @@ describe('Store Component', () => {
   test('Displays Product Cards', () => {
     render(<Store />);
 
-    const productCards = screen.getAllByTestId(/^product-card-/); // Match all product cards dynamically by their data-testid prefix
+    const productCards = screen.getAllByTestId(/^product-card-/);
     expect(productCards).toHaveLength(3);
 
     const productNames = ['Product 1', 'Product 2', 'Product 3'];

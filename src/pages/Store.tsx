@@ -31,7 +31,7 @@ export const Store: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-100" data-testid="products-container">
+    <div data-testid="products-container">
       <AnimatedSection
         className="text-center py-10"
         data-testid="products-header"
