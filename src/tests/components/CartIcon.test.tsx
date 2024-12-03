@@ -136,8 +136,6 @@ describe('CartIcon', () => {
         <CartIcon />
       </Router>
     );
-
-    const cartButton = screen.getByTitle('Shopping Cart');
     const cartCount = screen.queryByText('0');
 
     // Assert that the cart count element is not rendered when the cart is empty

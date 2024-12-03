@@ -30,7 +30,7 @@ class Store {
   ];
 
   cart: { product: Product; quantity: number }[] = [];
-  hasModalShown: boolean = false;
+  hasModalShown = false;
 
   constructor() {
     makeAutoObservable(this);
