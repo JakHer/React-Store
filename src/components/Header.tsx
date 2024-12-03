@@ -18,13 +18,13 @@ export const Header = () => {
       className="w-full bg-white border-b border-gray-300 shadow-sm relative"
       data-testid="header"
     >
-      <nav className="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center h-[60px]">
-        <ul className="flex w-full justify-between items-center space-x-6 lg:space-x-10">
-          <div className="hidden lg:flex justify-start w-2/6">
+      <nav className="mx-auto px-8 py-4 flex justify-around items-center h-[60px]">
+        <ul className="flex w-full justify-between items-center">
+          <div className="hidden lg:flex justify-start w-[40%] gap-8">
             <MenuLink to="/" text="Home" />
           </div>
 
-          <div className="absolute left-1/2 transform -translate-x-1/2">
+          <div className="flex justify-center align-center">
             <Link
               to="/"
               className="text-3xl font-bold text-gray-800 hover:text-gray-500 transition-colors duration-300"
@@ -34,8 +34,9 @@ export const Header = () => {
             </Link>
           </div>
 
-          <div className="hidden lg:flex justify-end w-2/6">
+          <div className="hidden lg:flex justify-end w-[40%] gap-8">
             <MenuLink to="/store" text="Store" />
+            <MenuLink to="/chart" text="Chart" />
           </div>
         </ul>
 

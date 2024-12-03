@@ -20,6 +20,7 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
           <ul className="flex flex-col items-center space-y-6 text-gray-800">
             <MenuLink to="/" text="Home" onClick={toggleMenu} mobile />
             <MenuLink to="/store" text="Store" onClick={toggleMenu} mobile />
+            <MenuLink to="/chart" text="Chart" onClick={toggleMenu} mobile />
           </ul>
         </motion.div>
       )}
