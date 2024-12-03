@@ -1,35 +1,8 @@
 import { motion } from 'framer-motion';
 import { AnimatedSection } from '../components/AnimatedSection';
-import { ProductCard } from '../components/ProductCard';
-import { useMemo } from 'react';
-
-interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-}
-
-const products: Product[] = [
-  { id: 1, name: 'Product 1', description: 'Amazing product 1', price: 25.99 },
-  { id: 2, name: 'Product 2', description: 'Amazing product 2', price: 15.99 },
-  { id: 3, name: 'Product 3', description: 'Amazing product 3', price: 35.99 },
-];
+import ProductCard from '../components/ProductCard';
 
 export const Store: React.FC = () => {
-  const productCards = useMemo(
-    () =>
-      products.map((product) => (
-        <ProductCard
-          key={product.id}
-          name={product.name}
-          description={product.description}
-          price={product.price}
-        />
-      )),
-    [products]
-  );
-
   return (
     <div data-testid="products-container">
       <AnimatedSection
@@ -57,9 +30,7 @@ export const Store: React.FC = () => {
       </AnimatedSection>
 
       <AnimatedSection className="py-10" data-testid="products-list">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-16">
-          {productCards}
-        </div>
+        <ProductCard />
       </AnimatedSection>
     </div>
   );

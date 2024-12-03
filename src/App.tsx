@@ -1,9 +1,14 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
-import { Home } from './pages/Home';
+
 import { Store } from './pages/Store';
 import { AnimatePresence, motion } from 'framer-motion';
 import { NotFound } from './pages/NotFound';
+import React from 'react';
+import { CartIcon } from './components/CartIcon';
+import ChartPage from './pages/ChartPage';
+import { Home } from './pages/Home';
+import { Modal } from './components/Modal';
 
 const pageTransition = {
   initial: { opacity: 0 },
@@ -12,12 +17,16 @@ const pageTransition = {
   transition: { duration: 0.5, ease: 'easeInOut' },
 };
 
-const App = () => {
+const App: React.FC = () => {
   const location = useLocation();
+
+  const shouldShowCartIcon = location.pathname !== '/chart';
 
   return (
     <div className="flex flex-col" data-testid="app-container">
       <Header />
+      <Modal />
+      {shouldShowCartIcon && <CartIcon />}
       <AnimatePresence initial={false} mode="wait">
         <motion.div
           className="min-h-screen"
@@ -31,6 +40,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/store" element={<Store />} />
+            <Route path="/chart" element={<ChartPage />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
