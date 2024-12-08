@@ -44,7 +44,6 @@ class Store {
       existingItem.quantity += 1;
     } else {
       this.cart.push({ product, quantity: 1 });
-      // Trigger modal the first time an item is added to the cart
       if (this.cart.length === 1 && !this.hasModalShown) {
         this.hasModalShown = true;
       }
@@ -74,7 +73,7 @@ class Store {
 
   clearCart() {
     this.cart = [];
-    this.hasModalShown = false; // Reset modal flag when cart is cleared
+    this.hasModalShown = false;
   }
 
   get cartItemCount() {

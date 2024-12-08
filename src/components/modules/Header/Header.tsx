@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { HamburgerMenu } from './HamburgerMenu';
-import { MenuLink } from './MenuLink';
+import { MenuLink } from '../MenuLink/MenuLink';
+import { HamburgerMenu } from '../HamburgerMenu/HamburgerMenu';
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);

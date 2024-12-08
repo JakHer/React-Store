@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { MenuLinkProps } from '../types/types';
+import { MenuLinkProps } from './MenuLink.types';
 
 export const MenuLink: React.FC<MenuLinkProps> = ({
   to,

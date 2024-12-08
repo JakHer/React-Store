@@ -1,14 +1,14 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { Header } from './components/Header';
+import { Header } from './components/modules/Header/Header';
 
 import { Store } from './pages/Store';
 import { AnimatePresence, motion } from 'framer-motion';
 import { NotFound } from './pages/NotFound';
 import React from 'react';
-import { CartIcon } from './components/CartIcon';
 import ChartPage from './pages/ChartPage';
 import { Home } from './pages/Home';
-import { Modal } from './components/Modal';
+import { CartIcon } from './components/modules/CartIcon/CartIcon';
+import { Modal } from './components/modules/Modal/Modal';
 
 const pageTransition = {
   initial: { opacity: 0 },

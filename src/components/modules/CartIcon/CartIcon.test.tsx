@@ -1,9 +1,9 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter as Router, useNavigate } from 'react-router-dom';
-import { CartIcon } from '../../components/CartIcon';
-import store from '../../store/Store';
+import store from '../../../store/Store';
+import { CartIcon } from './CartIcon';
 
-jest.mock('../../store/Store', () => ({
+jest.mock('../../../store/Store', () => ({
   cart: [],
   addToCart: jest.fn(),
   removeFromCart: jest.fn(),

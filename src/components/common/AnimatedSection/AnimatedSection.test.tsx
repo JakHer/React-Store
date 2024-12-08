@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { motion, MotionProps } from 'framer-motion';
 import { jest } from '@jest/globals';
-import { AnimatedSection } from '../../components/AnimatedSection';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { AnimatedSection } from './AnimatedSection';
 
 jest.mock('framer-motion', () => {
   const originalModule =

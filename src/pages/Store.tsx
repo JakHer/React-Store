@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { AnimatedSection } from '../components/AnimatedSection';
-import ProductCard from '../components/ProductCard';
+import { AnimatedSection } from '../components/common/AnimatedSection/AnimatedSection';
+import ProductCard from '../components/modules/ProductCard/ProductCard';
 
 export const Store: React.FC = () => {
   return (

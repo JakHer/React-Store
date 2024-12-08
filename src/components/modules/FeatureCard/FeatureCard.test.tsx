@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import { FeatureCard } from '../../components/FeatureCard';
 import { motion } from 'framer-motion';
-import { FeatureCardProps } from '../../types/types';
+import { FeatureCard } from './FeatureCard';
+import { FeatureCardProps } from './FeatureCard.types';
 
 const renderFeatureCard = (props: Partial<FeatureCardProps> = {}) => {
   const defaultProps: FeatureCardProps = {
