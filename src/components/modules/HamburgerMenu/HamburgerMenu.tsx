@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { MenuLink } from './MenuLink';
-import { HamburgerMenuProps } from '../types/types';
+import { MenuLink } from '../MenuLink/MenuLink';
+import { HamburgerMenuProps } from './HamburgerMenu.types';
 
 export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
   menuOpen,

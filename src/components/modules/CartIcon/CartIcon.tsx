@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import store from '../store/Store';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import store from '../../../store/Store';
 
 export const CartIcon: React.FC = observer(() => {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ export const CartIcon: React.FC = observer(() => {
 
   return (
     <motion.div
-      className="fixed bottom-4 right-4 z-50"
+      className="fixed bottom-4 right-4 z-40"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}

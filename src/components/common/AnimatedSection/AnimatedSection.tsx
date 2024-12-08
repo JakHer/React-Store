@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { AnimatedSectionProps } from '../types/types';
+import { AnimatedSectionProps } from './AnimatedSection.types';
 
 export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   children,

@@ -1,9 +1,9 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import ProductCard from '../../components/ProductCard';
-import store from '../../store/Store';
+import store from '../../../store/Store';
+import ProductCard from './ProductCard';
 
-jest.mock('../../store/Store', () => ({
-  ...jest.requireActual('../../store/Store'),
+jest.mock('../../../store/Store', () => ({
+  ...jest.requireActual('../../../store/Store'),
   addToCart: jest.fn(),
   cart: [],
   products: [

@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { HamburgerMenu } from '../../components/HamburgerMenu';
-import { HamburgerMenuProps } from '../../types/types';
+import { HamburgerMenuProps } from './HamburgerMenu.types';
+import { HamburgerMenu } from './HamburgerMenu';
 
 const rendersMenu = (props: Partial<HamburgerMenuProps> = {}) => {
   const defaultProps: HamburgerMenuProps = {

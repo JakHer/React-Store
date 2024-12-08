@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { MenuLink } from '../../components/MenuLink';
-import { MenuLinkProps } from '../../types/types';
+import { MenuLinkProps } from './MenuLink.types';
+import { MenuLink } from './MenuLink';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),

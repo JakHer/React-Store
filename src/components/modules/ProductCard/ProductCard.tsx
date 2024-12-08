@@ -1,8 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { observer } from 'mobx-react-lite';
-import store from '../store/Store';
-import { Product } from '../types/types';
+
+import store from '../../../store/Store';
+import Title from '../../common/Title/Title';
+import Paragraph from '../../common/Paragraph/Paragraph';
+import Button from '../../common/Button/Button';
+
+interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+}
 
 const ProductCard: React.FC = observer(() => {
   const handleAddToCart = (product: Product) => {
@@ -30,23 +40,19 @@ const ProductCard: React.FC = observer(() => {
             data-testid={`product-card-${product.name}`}
           >
             <div>
-              <h3 className="text-xl font-bold text-gray-800">
-                {product.name}
-              </h3>
-              <p className="text-gray-600 mt-2">{product.description}</p>
-              <p className="text-yellow-500 text-lg font-bold mt-4">
-                ${product.price.toFixed(2)}
-              </p>
-              <button
+              <Title title={product.name} />
+              <Paragraph text={product.description} />
+              <Paragraph
+                text={`$${product.price.toFixed(2)}`}
+                className="text-yellow-500 text-lg font-bold mt-4"
+              />
+              <Button
+                text={existingItem ? 'Already in Cart' : 'Add to Cart'}
+                className={`bg-gray-800  text-white py-2 px-4 mt-4 ${existingItem ? 'bg-gray-400 cursor-not-allowed' : ''}`}
+                dataTestId={`add-to-cart-button-${product.id}`}
                 onClick={() => handleAddToCart(product)}
-                className={`bg-gray-800 text-white py-2 px-4 rounded-full text-sm hover:bg-gray-700 transition-all mt-4 ${
-                  existingItem ? 'bg-gray-400 cursor-not-allowed' : ''
-                }`}
                 disabled={!!existingItem}
-                data-testid={`add-to-cart-button-${product.id}`}
-              >
-                {existingItem ? 'Already in Cart' : 'Add to Cart'}
-              </button>
+              />
             </div>
           </motion.div>
         );

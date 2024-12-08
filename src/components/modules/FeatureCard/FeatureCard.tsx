@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
-import { FeatureCardProps } from '../types/types';
+import Title from '../../common/Title/Title';
+import Paragraph from '../../common/Paragraph/Paragraph';
+import { FeatureCardProps } from './FeatureCard.types';
 
 export const FeatureCard: React.FC<FeatureCardProps> = ({
   title,
@@ -12,7 +14,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
     transition={{ type: 'spring', stiffness: 200, damping: 20 }}
     data-testid={dataTestId}
   >
-    <h3 className="text-xl font-semibold text-gray-800 mb-4">{title}</h3>
-    <p className="text-gray-600">{description}</p>
+    <Title title={title} />
+    <Paragraph text={description} />
   </motion.div>
 );

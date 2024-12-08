@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { AnimatedSection } from '../components/AnimatedSection';
-import { FeatureCard } from '../components/FeatureCard';
+import { AnimatedSection } from '../components/common/AnimatedSection/AnimatedSection';
+import { FeatureCard } from '../components/modules/FeatureCard/FeatureCard';
 
 export const Home: React.FC = () => {
   return (
