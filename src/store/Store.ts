@@ -24,7 +24,17 @@ class Store {
 
   constructor() {
     makeAutoObservable(this);
+
+    const savedCart = localStorage.getItem('shoppingCart');
+    if (savedCart) {
+      this.cart = JSON.parse(savedCart);
+    }
+
     this.fetchProducts();
+  }
+
+  saveCartToLocalStorage() {
+    localStorage.setItem('shoppingCart', JSON.stringify(this.cart));
   }
 
   setProductError(message: string) {
@@ -113,6 +123,8 @@ class Store {
         }
       }
     });
+
+    this.saveCartToLocalStorage();
   }
 
   removeFromCart(productId: string) {
@@ -128,12 +140,16 @@ class Store {
         }
       }
     });
+
+    this.saveCartToLocalStorage();
   }
 
   removeProductFromCart(productId: string) {
     runInAction(() => {
       this.cart = this.cart.filter((item) => item.product.id !== productId);
     });
+
+    this.saveCartToLocalStorage();
   }
 
   hideModal() {
@@ -147,6 +163,8 @@ class Store {
       this.cart = [];
       this.hasModalShown = false;
     });
+
+    this.saveCartToLocalStorage();
   }
 
   get cartItemCount() {
