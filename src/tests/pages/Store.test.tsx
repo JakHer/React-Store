@@ -1,8 +1,33 @@
 import { render, screen } from '@testing-library/react';
 import { Store } from '../../pages/Store';
 import userEvent from '@testing-library/user-event';
+import store from '../../store/Store';
 
-describe('Store Component', () => {
+jest.mock('../../store/Store', () => ({
+  ...jest.requireActual('../../store/Store'),
+  fetchProducts: jest.fn(),
+  addToCart: jest.fn(),
+}));
+
+describe('Store Page', () => {
+  const mockProduct = {
+    id: '1',
+    name: 'Product 1',
+    description: 'Product 1 Description',
+    price: 100,
+  };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    store.products = [mockProduct];
+    store.cart = [];
+    store.productError = null;
+    store.isLoading = false;
+
+    const fetchProductsMock = jest.spyOn(store, 'fetchProducts');
+    fetchProductsMock.mockResolvedValueOnce(undefined);
+  });
+
   test('Renders Header and Description', () => {
     render(<Store />);
 
@@ -19,28 +44,23 @@ describe('Store Component', () => {
     render(<Store />);
 
     const productCards = screen.getAllByTestId(/^product-card-/);
-    expect(productCards).toHaveLength(3);
+    expect(productCards).toHaveLength(1);
 
-    const productNames = ['Product 1', 'Product 2', 'Product 3'];
-    const productPrices = ['$25.99', '$15.99', '$35.99'];
+    const productName = screen.getByTestId(`product-title-${mockProduct.name}`);
+    expect(productName).toBeInTheDocument();
 
-    productNames.forEach((name, index) => {
-      const productCard = screen.getByTestId(`product-card-${name}`);
-      expect(productCard).toBeInTheDocument();
-
-      const productName = screen.getByText(name);
-      expect(productName).toBeInTheDocument();
-
-      const productPrice = screen.getByText(productPrices[index]);
-      expect(productPrice).toBeInTheDocument();
-    });
+    const productPrice = screen.getByTestId(
+      `product-price-${mockProduct.price}`
+    );
+    expect(productPrice).toBeInTheDocument();
   });
 
   test('Product Card hover effect', async () => {
     render(<Store />);
 
-    const card = screen.getByTestId('product-card-Product 1');
+    const card = screen.getByTestId(`product-card-${mockProduct.id}`);
     expect(card).toHaveClass('cursor-pointer');
+
     await userEvent.hover(card);
   });
 });

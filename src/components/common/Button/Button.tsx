@@ -17,9 +17,13 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const bgColorClass = className.includes('bg-') ? className : 'bg-gray-200';
 
+  const buttonBgClass = disabled
+    ? 'bg-gray-400 cursor-not-allowed'
+    : bgColorClass;
+
   return (
     <button
-      className={`text-gray-800 py-2 px-4 rounded-full text-sm hover:opacity-80 transition-all  ${bgColorClass} ${className}`}
+      className={`text-gray-800 py-2 px-4 rounded-full text-sm hover:opacity-80 transition-all ${buttonBgClass} ${className}`}
       data-testid={dataTestId}
       onClick={onClick}
       disabled={disabled}

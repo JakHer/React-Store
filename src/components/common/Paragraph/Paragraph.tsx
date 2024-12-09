@@ -8,7 +8,7 @@ interface ParagraphProps {
 
 const Paragraph: React.FC<ParagraphProps> = ({
   text,
-  className,
+  className = '',
   dataTestId,
 }) => {
   return (

@@ -16,21 +16,21 @@ const CartPage: React.FC = observer(() => {
     navigate('/store');
   };
 
-  const handleIncrease = (productId: number) => {
+  const handleIncrease = (productId: string) => {
     const product = store.cart.find((item) => item.product.id === productId);
     if (product) {
       store.addToCart(product.product);
     }
   };
 
-  const handleDecrease = (productId: number) => {
+  const handleDecrease = (productId: string) => {
     const product = store.cart.find((item) => item.product.id === productId);
     if (product && product.quantity > 1) {
       store.removeFromCart(product.product.id);
     }
   };
 
-  const handleRemoveItem = (productId: number) => {
+  const handleRemoveItem = (productId: string) => {
     store.removeProductFromCart(productId);
   };
 
