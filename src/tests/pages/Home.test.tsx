@@ -18,7 +18,7 @@ afterEach(() => {
   cleanup();
   window.history.pushState({}, '', '/');
 });
-describe('Home Component', () => {
+describe('Home Page', () => {
   test('Renders the hero section and heading correctly', () => {
     renderHome();
 

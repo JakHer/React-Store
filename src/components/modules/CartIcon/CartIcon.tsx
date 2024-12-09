@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import store from '../../../store/Store';
+import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 
 export const CartIcon: React.FC = observer(() => {
   const navigate = useNavigate();
@@ -13,11 +14,11 @@ export const CartIcon: React.FC = observer(() => {
   };
 
   const uniqueItemsCount = store.cart.reduce(
-    (uniqueProducts: Set<number>, { product }) => {
+    (uniqueProducts: Set<string>, { product }) => {
       uniqueProducts.add(product.id);
       return uniqueProducts;
     },
-    new Set<number>()
+    new Set<string>()
   ).size;
 
   useEffect(() => {
@@ -49,7 +50,8 @@ export const CartIcon: React.FC = observer(() => {
           damping: 10,
         }}
       >
-        🛒
+        <ShoppingCartIcon className="h-6 w-6" />
+
         {uniqueItemsCount > 0 && (
           <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full px-2 py-1 text-xs font-bold">
             {uniqueItemsCount}

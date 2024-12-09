@@ -16,6 +16,22 @@ jest.mock('react-router-dom', () => ({
 describe('Modal Component', () => {
   const mockNavigate = jest.fn();
 
+  // Mock the products array in the store
+  const mockProducts = [
+    {
+      id: 'Test ID 1',
+      name: 'Product 1',
+      price: 100,
+      description: 'Test Description 1',
+    },
+    {
+      id: 'Test ID 2',
+      name: 'Product 2',
+      price: 200,
+      description: 'Test Description 2',
+    },
+  ];
+
   const renderModal = () =>
     render(
       <Router>
@@ -27,12 +43,15 @@ describe('Modal Component', () => {
     store.clearCart();
     jest.clearAllMocks();
     (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
+
+    // Mock the store's products to return mockProducts
+    store.products = mockProducts; // Ensure this is set up correctly
   });
 
   test('should show the modal when an item is added to the cart', async () => {
     (useLocation as jest.Mock).mockReturnValue({ pathname: '/store' });
 
-    const product = store.products[0];
+    const product = store.products[0]; // Use the mocked product
     store.addToCart(product);
 
     renderModal();
