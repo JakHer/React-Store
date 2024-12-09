@@ -97,7 +97,7 @@ export const Home: React.FC = () => {
         >
           <Link
             to="/store"
-            className="bg-yellow-500 text-white py-3 px-6 rounded-full text-lg hover:bg-yellow-600 transition-all duration-200 ease-in-out"
+            className="bg-gray-800 text-white py-3 px-6 rounded-full text-lg hover:bg-gray-700 transition-all duration-200 ease-in-out"
             data-testid="cta-button"
           >
             Browse Our Store
