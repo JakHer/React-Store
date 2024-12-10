@@ -31,7 +31,9 @@ const App: React.FC = () => {
         <Modal />
         {shouldShowCartIcon && <CartIcon />}
         <div className="flex-grow">
-          <AnimatePresence initial={false} mode="wait">
+          <AnimatePresence
+            initial={false}
+            mode="wait">
             <motion.div
               variants={pageTransition}
               initial="initial"
@@ -39,13 +41,24 @@ const App: React.FC = () => {
               exit="exit"
               key={location.pathname}
               className="min-h-full"
-              data-testid="page-transition"
-            >
+              data-testid="page-transition">
               <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/store" element={<Store />} />
-                <Route path="/chart" element={<ChartPage />} />
-                <Route path="*" element={<NotFound />} />
+                <Route
+                  path="/"
+                  element={<Home />}
+                />
+                <Route
+                  path="/store"
+                  element={<Store />}
+                />
+                <Route
+                  path="/chart"
+                  element={<ChartPage />}
+                />
+                <Route
+                  path="*"
+                  element={<NotFound />}
+                />
               </Routes>
             </motion.div>
           </AnimatePresence>

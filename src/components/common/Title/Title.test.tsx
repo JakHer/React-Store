@@ -13,7 +13,10 @@ describe('Title Component', () => {
 
   test('applies custom className', () => {
     render(
-      <Title title="Custom Styled Title" className="text-blue-500 underline" />
+      <Title
+        title="Custom Styled Title"
+        className="text-blue-500 underline"
+      />
     );
     const titleElement = screen.getByText('Custom Styled Title');
     expect(titleElement).toHaveClass('text-blue-500 underline');
@@ -23,7 +26,12 @@ describe('Title Component', () => {
   });
 
   test('renders with data-testid', () => {
-    render(<Title title="Test ID Title" dataTestId="title-test-id" />);
+    render(
+      <Title
+        title="Test ID Title"
+        dataTestId="title-test-id"
+      />
+    );
     const titleElement = screen.getByTestId('title-test-id');
     expect(titleElement).toBeInTheDocument();
     expect(titleElement).toHaveTextContent('Test ID Title');
@@ -37,7 +45,12 @@ describe('Title Component', () => {
   });
 
   test('handles empty title gracefully', () => {
-    render(<Title title="" dataTestId="empty-title" />);
+    render(
+      <Title
+        title=""
+        dataTestId="empty-title"
+      />
+    );
     const titleElement = screen.getByTestId('empty-title');
     expect(titleElement).toBeInTheDocument();
     expect(titleElement).toHaveTextContent(''); // Explicitly check for empty content

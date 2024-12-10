@@ -15,7 +15,12 @@ jest.mock('framer-motion', () => {
         (
           props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> &
             MotionProps
-        ) => <section {...props} role="region" />
+        ) => (
+          <section
+            {...props}
+            role="region"
+          />
+        )
       ),
     },
   };
@@ -66,7 +71,9 @@ describe('AnimatedSection Component', () => {
 
   test('Passes additional props to the section element', () => {
     render(
-      <AnimatedSection id="test-id" aria-label="animated-section">
+      <AnimatedSection
+        id="test-id"
+        aria-label="animated-section">
         <p>Test Child</p>
       </AnimatedSection>
     );

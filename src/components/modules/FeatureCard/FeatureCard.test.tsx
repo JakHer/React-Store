@@ -10,7 +10,12 @@ const renderFeatureCard = (props: Partial<FeatureCardProps> = {}) => {
     dataTestId: 'feature-card',
   };
 
-  render(<FeatureCard {...defaultProps} {...props} />);
+  render(
+    <FeatureCard
+      {...defaultProps}
+      {...props}
+    />
+  );
 };
 
 jest.mock('framer-motion', () => {

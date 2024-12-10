@@ -7,8 +7,14 @@ const renderHome = () => {
   render(
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/store" element={<Store />} />
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route
+          path="/store"
+          element={<Store />}
+        />
       </Routes>
     </Router>
   );

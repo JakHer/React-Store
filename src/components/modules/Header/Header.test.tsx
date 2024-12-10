@@ -9,8 +9,14 @@ const renderHeader = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/store" element={<Store />} />
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route
+          path="/store"
+          element={<Store />}
+        />
       </Routes>
     </BrowserRouter>
   );

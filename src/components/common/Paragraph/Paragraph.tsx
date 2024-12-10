@@ -12,7 +12,9 @@ const Paragraph: React.FC<ParagraphProps> = ({
   dataTestId,
 }) => {
   return (
-    <p className={`text-gray-600 ${className}`} data-testid={dataTestId}>
+    <p
+      className={`text-gray-600 ${className}`}
+      data-testid={dataTestId}>
       {text}
     </p>
   );

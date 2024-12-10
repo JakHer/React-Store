@@ -10,8 +10,7 @@ const Title: React.FC<TitleProps> = ({ title, className = '', dataTestId }) => {
   return (
     <h3
       className={`text-xl font-semibold text-gray-800 mb-4 ${className}`}
-      data-testid={dataTestId}
-    >
+      data-testid={dataTestId}>
       {title}
     </h3>
   );

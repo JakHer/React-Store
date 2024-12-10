@@ -15,12 +15,26 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: '-100%', opacity: 0 }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
-          data-testid="mobile-menu"
-        >
+          data-testid="mobile-menu">
           <ul className="flex flex-col items-center space-y-6 text-gray-800 ">
-            <MenuLink to="/" text="Home" onClick={toggleMenu} mobile />
-            <MenuLink to="/store" text="Store" onClick={toggleMenu} mobile />
-            <MenuLink to="/chart" text="Chart" onClick={toggleMenu} mobile />
+            <MenuLink
+              to="/"
+              text="Home"
+              onClick={toggleMenu}
+              mobile
+            />
+            <MenuLink
+              to="/store"
+              text="Store"
+              onClick={toggleMenu}
+              mobile
+            />
+            <MenuLink
+              to="/chart"
+              text="Chart"
+              onClick={toggleMenu}
+              mobile
+            />
           </ul>
         </motion.div>
       )}
