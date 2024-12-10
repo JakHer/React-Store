@@ -22,6 +22,7 @@ export const Home: React.FC = () => {
         >
           Welcome to My React Store
         </motion.h1>
+
         <motion.p
           className="text-xl text-gray-600 mb-8"
           initial={{ opacity: 0 }}
@@ -29,8 +30,8 @@ export const Home: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           data-testid="hero-description"
         >
-          Your one-stop shop for all things awesome. Discover products you'll
-          love!
+          Your one`&apos;`stop shop for all things awesome. Discover products
+          you`&apos;`ll love!
         </motion.p>
         <motion.div
           initial={{ scale: 0.8 }}

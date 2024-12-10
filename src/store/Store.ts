@@ -11,9 +11,13 @@ interface Product {
 
 class Store {
   products: Product[] = [];
+
   cart: { product: Product; quantity: number }[] = [];
+
   hasModalShown = false;
+
   isLoading = false;
+
   productError: string | null = null;
 
   constructor() {
