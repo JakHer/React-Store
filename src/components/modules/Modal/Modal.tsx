@@ -30,7 +30,7 @@ export const Modal: React.FC = observer(() => {
 
   useEffect(() => {
     if (store.cart.length === 1 && location.pathname === '/store') {
-      store.hasModalShown = true;
+      store.showModal();
     }
   }, [store.cart.length, location.pathname]);
 

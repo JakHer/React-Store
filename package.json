@@ -20,9 +20,8 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
-    "format": "prettier --write 'src/**/*.{ts,tsx,json,css,md}'",
+    "lint": "eslint --fix .",
+    "format": "prettier --write .",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",

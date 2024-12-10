@@ -133,6 +133,12 @@ class Store {
     });
   }
 
+  showModal() {
+    runInAction(() => {
+      this.hasModalShown = true;
+    });
+  }
+
   clearCart() {
     runInAction(() => {
       this.cart = [];

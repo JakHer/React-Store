@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { useFirebase } from '../../context/FirebaseContext';
 import CartPage from './ChartPage';
+import { act } from 'react';
 
 interface Product {
   id: string;
@@ -148,7 +149,7 @@ describe('CartPage', () => {
     expect(mockStore.removeProductFromCart).toHaveBeenCalledTimes(1);
   });
 
-  test('clears the cart when clear cart button is clicked', () => {
+  test('clears the cart when clear cart button is clicked', async () => {
     mockStore.cart = [
       {
         product: {
@@ -165,7 +166,9 @@ describe('CartPage', () => {
     renderWithRouter();
 
     const clearButton = screen.getByTestId('clear-cart-button');
-    fireEvent.click(clearButton);
+    await act(async () => {
+      fireEvent.click(clearButton);
+    });
 
     expect(mockStore.clearCart).toHaveBeenCalledTimes(1);
   });
