@@ -1,5 +1,3 @@
-name: Run Tests, Linting, and Build
-
 on:
   pull_request:
     branches:
@@ -13,6 +11,8 @@ permissions:
 jobs:
   setup:
     runs-on: ubuntu-latest
+    outputs:
+      node_modules_cache: ${{ steps.cache-node-modules.outputs.cache-hit }}
 
     steps:
       - name: Checkout Repository
@@ -24,11 +24,10 @@ jobs:
           node-version: '22.11.0' # Using the specified Node.js version
 
       - name: Cache Node.js modules
+        id: cache-node-modules
         uses: actions/cache@v3
         with:
-          path: |
-            node_modules
-            .vite
+          path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-modules-
@@ -38,8 +37,7 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    needs: setup # This job depends on the setup job
-
+    needs: setup
     steps:
       - name: Run ESLint Fix
         run: npm run lint:fix
@@ -49,15 +47,14 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    needs: lint # This job depends on the lint job
-
+    needs: lint
     steps:
       - name: Run Tests
         run: npm test
 
   build:
     runs-on: ubuntu-latest
-    needs: test # This job depends on the test job
+    needs: test
     env:
       # Set Firebase environment variables securely for the build process
       VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
