@@ -12,8 +12,7 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     transition={{ duration: 0.8, delay }}
-    {...props}
-  >
+    {...props}>
     {children}
   </motion.section>
 );

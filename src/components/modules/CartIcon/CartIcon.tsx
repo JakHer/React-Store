@@ -36,8 +36,7 @@ export const CartIcon: React.FC = observer(() => {
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      data-testid="cart-icon-container"
-    >
+      data-testid="cart-icon-container">
       <motion.button
         className="relative bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center"
         title="Shopping Cart"
@@ -50,8 +49,7 @@ export const CartIcon: React.FC = observer(() => {
           type: 'spring',
           stiffness: 300,
           damping: 10,
-        }}
-      >
+        }}>
         <ShoppingCartIcon className="h-6 w-6" />
 
         {uniqueItemsCount > 0 && (

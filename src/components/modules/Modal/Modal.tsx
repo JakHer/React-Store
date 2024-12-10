@@ -54,24 +54,21 @@ export const Modal: React.FC = observer(() => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
           onClick={handleOverlayClick}
-          data-testid="modal-overlay"
-        >
+          data-testid="modal-overlay">
           <motion.div
             className="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.5 }}
-            data-testid="modal-container"
-          >
+            data-testid="modal-container">
             <Title
               title="Item Added to Cart"
               dataTestId="modal-title"
             />
             <div
               className="mb-6"
-              data-testid="modal-details"
-            >
+              data-testid="modal-details">
               <Title
                 title={product.name}
                 dataTestId="product-name"

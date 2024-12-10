@@ -20,8 +20,7 @@ export const MenuLink: React.FC<MenuLinkProps> = ({
             : 'text-gray-800 hover:text-gray-500'
         }`}
         data-testid={`${mobile ? 'mobile-' : ''}${text.toLowerCase()}-link`}
-        onClick={onClick}
-      >
+        onClick={onClick}>
         {text}
       </Link>
     </li>
