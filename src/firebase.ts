@@ -29,9 +29,3 @@ const app =
 
 // Get Firestore instance
 export const db = getFirestore(app);
-
-try {
-  const app = initializeApp(firebaseConfig);
-} catch (error) {
-  console.error('Firebase initialization error:', error);
-}

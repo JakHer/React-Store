@@ -1,11 +1,5 @@
 import { makeAutoObservable, runInAction } from 'mobx';
-import {
-  collection,
-  getDocs,
-  addDoc,
-  deleteDoc,
-  doc,
-} from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 
 interface Product {
@@ -19,7 +13,7 @@ class Store {
   products: Product[] = [];
   cart: { product: Product; quantity: number }[] = [];
   hasModalShown = false;
-  isLoading: boolean = false;
+  isLoading = false;
   productError: string | null = null;
 
   constructor() {

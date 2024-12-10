@@ -27,7 +27,7 @@ declare global {
     jest?: typeof jest; // if needed
   }
 
-  var importMeta: ImportMeta;
+  const importMeta: ImportMeta;
 }
 
 export {};
