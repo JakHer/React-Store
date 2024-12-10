@@ -14,7 +14,8 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.json',
+    // Ensure this points to the correct tsconfig file
+    project: ['./tsconfig.json', './tsconfig.vite.json'],
     tsconfigRootDir: './',
   },
   plugins: ['@typescript-eslint', 'prettier', 'react', 'import'],
@@ -69,7 +70,4 @@ module.exports = {
       },
     },
   ],
-  parserOptions: {
-    project: './tsconfig.vite.json',
-  },
 };
