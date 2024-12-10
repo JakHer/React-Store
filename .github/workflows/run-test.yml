@@ -35,15 +35,15 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd path/to/subdirectory && npm ci
+          npm ci
 
       - name: Run ESLint Fix
         run: |
-          cd path/to/subdirectory && npm run lint:fix
+          npm run lint:fix
 
       - name: Run ESLint
         run: |
-          cd path/to/subdirectory && npm run lint
+          npm run lint
 
   test:
     runs-on: ubuntu-latest
@@ -70,11 +70,11 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd path/to/subdirectory && npm ci
+          npm ci
 
       - name: Run Tests
         run: |
-          cd path/to/subdirectory && npm test
+          npm test
 
   build:
     runs-on: ubuntu-latest
@@ -109,8 +109,8 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd path/to/subdirectory && npm ci
+          npm ci
 
       - name: Build the application with Vite
         run: |
-          cd path/to/subdirectory && npm run build
+          npm run build
