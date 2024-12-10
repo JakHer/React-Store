@@ -19,5 +19,6 @@
       "react": ["./node_modules/@types/react"]
     }
   },
-  "include": ["src", "setupTests.ts", "vite-env.d.ts"]
+  "typeRoots": ["node_modules/@types", "src/types"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "global.d.ts", "src/setupTests.ts"]
 }

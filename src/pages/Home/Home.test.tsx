@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { Home } from '../../pages/Home';
-import { Store } from '../../pages/Store';
+import { Home } from './Home';
+import { Store } from '../Store/Store';
 
 const renderHome = () => {
   render(

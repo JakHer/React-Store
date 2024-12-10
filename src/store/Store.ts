@@ -49,7 +49,11 @@ class Store {
     });
   }
 
-  async fetchProducts() {
+  async fetchProducts(forceRefresh = false) {
+    if (this.products.length > 0 && !forceRefresh) {
+      return;
+    }
+
     runInAction(() => {
       this.isLoading = true;
       this.productError = null;
@@ -59,53 +63,26 @@ class Store {
       const querySnapshot = await getDocs(collection(db, 'products'));
       runInAction(() => {
         this.products = querySnapshot.docs.map((doc) => {
-          const productData = doc.data();
-
-          const product: Product = {
+          const data = doc.data();
+          if (!data.name || !data.price) {
+            console.warn(`Product ${doc.id} has invalid data`);
+          }
+          return {
             id: doc.id,
-            name: productData.name || 'Unnamed Product',
-            description: productData.description || 'No description available',
-            price: productData.price || 0,
-          };
-
-          return product;
+            name: data.name ?? 'Unnamed Product',
+            description: data.description ?? '',
+            price: data.price ?? 0,
+          } as Product;
         });
       });
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        this.setProductError(error.message);
-      } else {
-        this.setProductError('An unknown error occurred.');
-      }
+    } catch (error) {
+      this.setProductError(
+        error instanceof Error ? error.message : 'Unknown error'
+      );
     } finally {
       runInAction(() => {
         this.isLoading = false;
       });
-    }
-  }
-
-  async addProduct(newProduct: Omit<Product, 'id'>) {
-    try {
-      const docRef = await addDoc(collection(db, 'products'), newProduct);
-      runInAction(() => {
-        this.products.push({ id: docRef.id, ...newProduct });
-      });
-    } catch (error) {
-      console.error('Error adding product:', error);
-    }
-  }
-
-  async removeProduct(productId: string) {
-    try {
-      const productRef = doc(db, 'products', productId);
-      await deleteDoc(productRef);
-      runInAction(() => {
-        this.products = this.products.filter(
-          (product) => product.id !== productId
-        );
-      });
-    } catch (error) {
-      console.error('Error removing product:', error);
     }
   }
 

@@ -3,12 +3,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import store from '../../../store/Store';
 import Title from '../../common/Title/Title';
 import Paragraph from '../../common/Paragraph/Paragraph';
 import Button from '../../common/Button/Button';
+import { useFirebase } from '../../../context/FirebaseContext';
 
 export const Modal: React.FC = observer(() => {
+  const { store } = useFirebase();
   const navigate = useNavigate();
   const location = useLocation();
 

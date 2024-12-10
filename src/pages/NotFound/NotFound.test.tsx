@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import { NotFound } from '../../pages/NotFound';
+import { NotFound } from '../../pages/NotFound/NotFound';
 
 describe('NotFound Component', () => {
   test('Renders the 404 text correctly', () => {

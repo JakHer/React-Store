@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { observer } from 'mobx-react-lite';
-
-import store from '../../../store/Store';
+import { useFirebase } from '../../../context/FirebaseContext';
 import Title from '../../common/Title/Title';
 import Paragraph from '../../common/Paragraph/Paragraph';
 import Button from '../../common/Button/Button';
@@ -12,13 +11,15 @@ import ProductError from '../../common/ProductError/ProductError';
 import { Product } from './ProductCard.types';
 
 const ProductCard: React.FC = observer(() => {
+  const { store } = useFirebase();
+
   const handleAddToCart = (product: Product) => {
     store.addToCart(product);
   };
 
   useEffect(() => {
     store.fetchProducts();
-  }, []);
+  }, [store]);
 
   if (store.isLoading) {
     return <Loader data-testid="loader" />;
@@ -76,7 +77,11 @@ const ProductCard: React.FC = observer(() => {
               />
               <Button
                 text={existingItem ? 'Already in Cart' : 'Add to Cart'}
-                className={`text-white py-2 px-4 mt-4 ${existingItem ? 'bg-gray-400 cursor-not-allowed' : 'bg-gray-800 hover:bg-gray-700'}`}
+                className={`text-white py-2 px-4 mt-4 ${
+                  existingItem
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-gray-800 hover:bg-gray-700'
+                }`}
                 dataTestId={`add-to-cart-button-${product.id}`}
                 onClick={() => handleAddToCart(product)}
                 disabled={!!existingItem}

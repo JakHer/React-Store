@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Store } from '../../pages/Store';
+import { Store } from '../../pages/Store/Store';
 import userEvent from '@testing-library/user-event';
 import store from '../../store/Store';
 
