@@ -53,7 +53,6 @@ export const CartIcon: React.FC = observer(() => {
         }}
       >
         <ShoppingCartIcon className="h-6 w-6" />
-
         {uniqueItemsCount > 0 && (
           <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full px-2 py-1 text-xs font-bold">
             {uniqueItemsCount}

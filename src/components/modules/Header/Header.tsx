@@ -33,7 +33,7 @@ export const Header = () => {
               className="text-3xl font-bold text-gray-800 hover:text-gray-500 transition-colors duration-300"
               data-testid="welcome-heading"
             >
-              MyReactStore
+              MyReactStore&apos;s
             </Link>
           </div>
 

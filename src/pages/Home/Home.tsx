@@ -30,8 +30,8 @@ export const Home: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           data-testid="hero-description"
         >
-          Your one`&apos;`stop shop for all things awesome. Discover products
-          you`&apos;`ll love!
+          Your one-stop shop for all things awesome. Discover products
+          you&apos;ll love!
         </motion.p>
         <motion.div
           initial={{ scale: 0.8 }}
