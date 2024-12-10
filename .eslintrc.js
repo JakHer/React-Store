@@ -60,4 +60,16 @@ module.exports = {
       },
     },
   },
+  ignorePatterns: ['vite.config.ts', '**/.husky/_/run/_/post-rewrite'],
+  overrides: [
+    {
+      files: ['vite.config.ts'],
+      rules: {
+        'no-undef': 'off',
+      },
+    },
+  ],
+  parserOptions: {
+    project: './tsconfig.vite.json',
+  },
 };

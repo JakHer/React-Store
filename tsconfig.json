@@ -20,5 +20,5 @@
     }
   },
   "typeRoots": ["node_modules/@types", "src/types"],
-  "include": ["src/**/*.ts", "src/**/*.tsx", "global.d.ts", "src/setupTests.ts"]
+  "include": ["src/**/*", "global.d.ts", "src/setupTests.ts", "vite.config.ts" ]
 }
