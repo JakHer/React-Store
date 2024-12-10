@@ -33,7 +33,8 @@ const App: React.FC = () => {
         <div className="flex-grow">
           <AnimatePresence
             initial={false}
-            mode="wait">
+            mode="wait"
+          >
             <motion.div
               variants={pageTransition}
               initial="initial"
@@ -41,7 +42,8 @@ const App: React.FC = () => {
               exit="exit"
               key={location.pathname}
               className="min-h-full"
-              data-testid="page-transition">
+              data-testid="page-transition"
+            >
               <Routes>
                 <Route
                   path="/"

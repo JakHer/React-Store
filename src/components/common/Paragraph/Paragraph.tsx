@@ -14,7 +14,8 @@ const Paragraph: React.FC<ParagraphProps> = ({
   return (
     <p
       className={`text-gray-600 ${className}`}
-      data-testid={dataTestId}>
+      data-testid={dataTestId}
+    >
       {text}
     </p>
   );
