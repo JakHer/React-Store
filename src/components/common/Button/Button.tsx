@@ -26,7 +26,8 @@ const Button: React.FC<ButtonProps> = ({
       className={`text-gray-800 py-2 px-4 rounded-full text-sm hover:opacity-80 transition-all ${buttonBgClass} ${className}`}
       data-testid={dataTestId}
       onClick={onClick}
-      disabled={disabled}>
+      disabled={disabled}
+    >
       {text}
     </button>
   );

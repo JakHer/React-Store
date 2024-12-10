@@ -73,7 +73,8 @@ describe('AnimatedSection Component', () => {
     render(
       <AnimatedSection
         id="test-id"
-        aria-label="animated-section">
+        aria-label="animated-section"
+      >
         <p>Test Child</p>
       </AnimatedSection>
     );

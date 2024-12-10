@@ -41,7 +41,8 @@ const ProductCard: React.FC = observer(() => {
   return (
     <div
       className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-16"
-      data-testid="product-cards-container">
+      data-testid="product-cards-container"
+    >
       {store.products.map((product) => {
         const existingItem = store.cart.find(
           (item) => item.product.id === product.id
@@ -58,7 +59,8 @@ const ProductCard: React.FC = observer(() => {
               scale: 1.01,
               boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.1)',
             }}
-            data-testid={`product-card-${product.id}`}>
+            data-testid={`product-card-${product.id}`}
+          >
             <div>
               <Title
                 title={product.name}

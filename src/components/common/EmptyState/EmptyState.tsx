@@ -5,7 +5,8 @@ const EmptyState: React.FC = () => {
   return (
     <div
       className="flex flex-col justify-center items-center py-8"
-      data-testid="empty-state">
+      data-testid="empty-state"
+    >
       <ShoppingCartIcon
         data-testid="shopping-cart-icon"
         className="w-16 h-16 text-gray-400 mb-4"
