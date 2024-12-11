@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { useFirebase } from '../../context/FirebaseContext';
-import CartPage from './ChartPage';
+import CartPage from './CartPage';
 import { act } from 'react';
 
 interface Product {

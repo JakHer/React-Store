@@ -24,14 +24,13 @@ describe('App Component', () => {
     expect(footerElement).toBeInTheDocument();
   });
 
-  test('renders the CartIcon component on routes except "/chart"', () => {
+  test('renders the CartIcon component on routes except "/cart"', () => {
     renderApp();
 
     const cartIcon = screen.getByTestId('cart-icon-container');
     expect(cartIcon).toBeInTheDocument();
 
-    // Navigate to /chart and check if CartIcon is removed
-    fireEvent.click(screen.getByTestId('chart-link'));
+    fireEvent.click(screen.getByTestId('cart-link'));
     expect(screen.queryByTestId('cart-icon')).not.toBeInTheDocument();
   });
 
@@ -55,14 +54,14 @@ describe('App Component', () => {
     expect(storeContainer).toBeInTheDocument();
   });
 
-  test('renders Chart page when clicking on the Chart link', async () => {
+  test('renders Cart page when clicking on the Cart link', async () => {
     renderApp();
 
-    const chartLink = screen.getByTestId('chart-link');
-    fireEvent.click(chartLink);
+    const cartLink = screen.getByTestId('cart-link');
+    fireEvent.click(cartLink);
 
-    const chartContainer = screen.getByTestId('cart-container');
-    expect(chartContainer).toBeInTheDocument();
+    const cartContainer = screen.getByTestId('cart-container');
+    expect(cartContainer).toBeInTheDocument();
   });
 
   test('renders NotFound page for invalid routes', async () => {

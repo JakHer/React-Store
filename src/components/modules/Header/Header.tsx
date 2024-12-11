@@ -43,8 +43,8 @@ export const Header = () => {
               text="Store"
             />
             <MenuLink
-              to="/chart"
-              text="Chart"
+              to="/cart"
+              text="Cart"
             />
           </div>
         </ul>

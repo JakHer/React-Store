@@ -11,7 +11,7 @@ export const CartIcon: React.FC = observer(() => {
   const [animateCart, setAnimateCart] = useState(false);
 
   const handleCartClick = () => {
-    navigate('/chart');
+    navigate('/cart');
   };
 
   const uniqueItemsCount = store.cart.reduce(

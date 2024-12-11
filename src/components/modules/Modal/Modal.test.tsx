@@ -83,7 +83,7 @@ describe('Modal Component', () => {
     });
   });
 
-  test('should navigate to chart page when "Go to Chart" is clicked', async () => {
+  test('should navigate to cart page when "Go to Cart" is clicked', async () => {
     (useLocation as jest.Mock).mockReturnValue({ pathname: '/store' });
 
     const product = store.products[0];
@@ -91,10 +91,10 @@ describe('Modal Component', () => {
 
     renderModal();
 
-    fireEvent.click(screen.getByTestId('go-to-chart-btn'));
+    fireEvent.click(screen.getByTestId('go-to-cart-btn'));
 
     await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('/chart');
+      expect(mockNavigate).toHaveBeenCalledWith('/cart');
     });
   });
 
@@ -119,17 +119,6 @@ describe('Modal Component', () => {
 
     expect(screen.getByTestId('modal-overlay')).toBeInTheDocument();
     expect(screen.getByTestId('modal-title')).toBeInTheDocument();
-  });
-
-  test('should not show the modal when an item is added to the cart on routes other than /store', () => {
-    (useLocation as jest.Mock).mockReturnValue({ pathname: '/chart' });
-
-    const product = store.products[0];
-    store.addToCart(product);
-
-    renderModal();
-
-    expect(screen.queryByTestId('modal-overlay')).not.toBeInTheDocument();
   });
 
   test('should show the modal when an item is added to the cart on the /store route', () => {

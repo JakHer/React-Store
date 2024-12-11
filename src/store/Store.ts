@@ -23,12 +23,13 @@ class Store {
   constructor() {
     makeAutoObservable(this);
 
+    this.fetchProducts();
+
     const savedCart = localStorage.getItem('shoppingCart');
     if (savedCart) {
       this.cart = JSON.parse(savedCart);
+      console.log('hasModalShown', this.hasModalShown);
     }
-
-    this.fetchProducts();
   }
 
   saveCartToLocalStorage() {

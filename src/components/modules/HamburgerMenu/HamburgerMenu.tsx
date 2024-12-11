@@ -31,8 +31,8 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
               mobile
             />
             <MenuLink
-              to="/chart"
-              text="Chart"
+              to="/cart"
+              text="Cart"
               onClick={toggleMenu}
               mobile
             />

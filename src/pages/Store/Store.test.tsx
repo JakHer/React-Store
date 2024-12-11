@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { Store } from '../../pages/Store/Store';
 import userEvent from '@testing-library/user-event';
+import { BrowserRouter } from 'react-router-dom';
 import store from '../../store/Store';
 
 jest.mock('../../store/Store', () => ({
@@ -28,8 +29,12 @@ describe('Store Page', () => {
     fetchProductsMock.mockResolvedValueOnce(undefined);
   });
 
+  const renderWithRouter = (ui: React.ReactNode) => {
+    return render(<BrowserRouter>{ui}</BrowserRouter>);
+  };
+
   test('Renders Header and Description', () => {
-    render(<Store />);
+    renderWithRouter(<Store />);
 
     const heading = screen.getByText(/Our Products/i);
     expect(heading).toBeInTheDocument();
@@ -41,7 +46,7 @@ describe('Store Page', () => {
   });
 
   test('Displays Product Cards', () => {
-    render(<Store />);
+    renderWithRouter(<Store />);
 
     const productCards = screen.getAllByTestId(/^product-card-/);
     expect(productCards).toHaveLength(1);
@@ -56,7 +61,7 @@ describe('Store Page', () => {
   });
 
   test('Product Card hover effect', async () => {
-    render(<Store />);
+    renderWithRouter(<Store />);
 
     const card = screen.getByTestId(`product-card-${mockProduct.id}`);
     expect(card).toHaveClass('cursor-pointer');

@@ -15,6 +15,9 @@ const ProductCard: React.FC = observer(() => {
 
   const handleAddToCart = (product: Product) => {
     store.addToCart(product);
+    if (store.cart.length === 1) {
+      store.showModal();
+    }
   };
 
   useEffect(() => {

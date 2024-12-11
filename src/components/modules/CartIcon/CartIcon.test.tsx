@@ -105,7 +105,7 @@ describe('CartIcon', () => {
     });
   });
 
-  it('should navigate to the /chart route when clicked', () => {
+  it('should navigate to the /cart route when clicked', () => {
     const navigate = jest.fn();
 
     (useNavigate as jest.Mock).mockReturnValue(navigate);
@@ -119,7 +119,7 @@ describe('CartIcon', () => {
     const cartButton = screen.getByTitle('Shopping Cart');
     fireEvent.click(cartButton);
 
-    expect(navigate).toHaveBeenCalledWith('/chart');
+    expect(navigate).toHaveBeenCalledWith('/cart');
   });
 
   it('should not show the cart count when the cart is empty', () => {
