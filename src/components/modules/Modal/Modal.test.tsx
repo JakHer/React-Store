@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import store from '../../../store/Store';
 import { Modal } from './Modal';
+import { formatCurrency } from '../../../utils/formatCurrency';
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -61,10 +62,10 @@ describe('Modal Component', () => {
     expect(screen.getByText('Item Added to Cart')).toBeInTheDocument();
     expect(screen.getByTestId('product-name').textContent).toBe(product.name);
     expect(screen.getByTestId('product-price').textContent).toBe(
-      `$${product.price.toFixed(2)} x 1`
+      `$${formatCurrency(product.price)} x 1`
     );
     expect(screen.getByTestId('subtotal').textContent).toBe(
-      `Subtotal: $${product.price.toFixed(2)}`
+      `Subtotal: $${formatCurrency(product.price)}`
     );
   });
 
