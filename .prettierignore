@@ -1,4 +1,5 @@
 node_modules;
 build;
 dist;
-src / styles / tailwind.css;
+src/styles/tailwind.css;
+.github/workflows/
