@@ -11,21 +11,36 @@ describe('Button Component', () => {
   });
 
   test('applies custom className', () => {
-    render(<Button text="Styled Button" className="bg-blue-500" />);
+    render(
+      <Button
+        text="Styled Button"
+        className="bg-blue-500"
+      />
+    );
     const buttonElement = screen.getByText('Styled Button');
     expect(buttonElement).toHaveClass('bg-blue-500');
   });
 
   test('handles onClick event', () => {
     const handleClick = jest.fn();
-    render(<Button text="Click Me" onClick={handleClick} />);
+    render(
+      <Button
+        text="Click Me"
+        onClick={handleClick}
+      />
+    );
     const buttonElement = screen.getByText('Click Me');
     fireEvent.click(buttonElement);
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
   test('renders with data-testid', () => {
-    render(<Button text="Test ID Button" dataTestId="button-test-id" />);
+    render(
+      <Button
+        text="Test ID Button"
+        dataTestId="button-test-id"
+      />
+    );
     const buttonElement = screen.getByTestId('button-test-id');
     expect(buttonElement).toBeInTheDocument();
   });
@@ -33,7 +48,11 @@ describe('Button Component', () => {
   test('disables button when disabled prop is true', () => {
     const handleClick = jest.fn();
     render(
-      <Button text="Disabled Button" onClick={handleClick} disabled={true} />
+      <Button
+        text="Disabled Button"
+        onClick={handleClick}
+        disabled={true}
+      />
     );
     const buttonElement = screen.getByText('Disabled Button');
     expect(buttonElement).toBeDisabled();

@@ -10,7 +10,12 @@ const renderFeatureCard = (props: Partial<FeatureCardProps> = {}) => {
     dataTestId: 'feature-card',
   };
 
-  render(<FeatureCard {...defaultProps} {...props} />);
+  render(
+    <FeatureCard
+      {...defaultProps}
+      {...props}
+    />
+  );
 };
 
 jest.mock('framer-motion', () => {
@@ -19,7 +24,12 @@ jest.mock('framer-motion', () => {
     ...originalModule,
     motion: {
       ...originalModule.motion,
-      div: jest.fn((props) => <div {...props} />),
+      div: jest.fn(({ whileHover, ...rest }) => (
+        <div
+          data-whilehover={JSON.stringify(whileHover)}
+          {...rest}
+        />
+      )),
     },
   };
 });
@@ -67,6 +77,7 @@ describe('FeatureCard Component', () => {
     expect(mockedDiv).toHaveBeenCalledWith(
       expect.objectContaining({
         whileHover: { scale: 1.05 },
+        transition: { type: 'spring', stiffness: 200, damping: 20 },
       }),
       expect.anything()
     );

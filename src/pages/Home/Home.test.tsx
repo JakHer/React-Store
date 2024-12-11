@@ -1,14 +1,20 @@
 import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { Home } from '../../pages/Home';
-import { Store } from '../../pages/Store';
+import { Home } from './Home';
+import { Store } from '../Store/Store';
 
 const renderHome = () => {
   render(
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/store" element={<Store />} />
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route
+          path="/store"
+          element={<Store />}
+        />
       </Routes>
     </Router>
   );
@@ -18,7 +24,7 @@ afterEach(() => {
   cleanup();
   window.history.pushState({}, '', '/');
 });
-describe('Home Component', () => {
+describe('Home Page', () => {
   test('Renders the hero section and heading correctly', () => {
     renderHome();
 

@@ -21,7 +21,10 @@ export const Header = () => {
       <nav className="mx-auto px-8 py-4 flex justify-around items-center h-[60px]">
         <ul className="flex w-full justify-between items-center">
           <div className="hidden lg:flex justify-start w-[40%] gap-8">
-            <MenuLink to="/" text="Home" />
+            <MenuLink
+              to="/"
+              text="Home"
+            />
           </div>
 
           <div className="flex justify-center align-center">
@@ -30,13 +33,19 @@ export const Header = () => {
               className="text-3xl font-bold text-gray-800 hover:text-gray-500 transition-colors duration-300"
               data-testid="welcome-heading"
             >
-              MyReactStore
+              MyReactStore&apos;s
             </Link>
           </div>
 
           <div className="hidden lg:flex justify-end w-[40%] gap-8">
-            <MenuLink to="/store" text="Store" />
-            <MenuLink to="/chart" text="Chart" />
+            <MenuLink
+              to="/store"
+              text="Store"
+            />
+            <MenuLink
+              to="/cart"
+              text="Cart"
+            />
           </div>
         </ul>
 
@@ -63,7 +72,10 @@ export const Header = () => {
         </button>
       </nav>
 
-      <HamburgerMenu menuOpen={menuOpen} toggleMenu={toggleMenu} />
+      <HamburgerMenu
+        menuOpen={menuOpen}
+        toggleMenu={toggleMenu}
+      />
     </header>
   );
 };

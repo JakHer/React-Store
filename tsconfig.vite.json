@@ -1,0 +1,4 @@
+{
+    "extends": "./tsconfig.json",
+    "include": ["vite.config.ts","vite-env.d.ts", "tailwind.config.js", ".eslintrc.js", "babel.config.js", "commitlint.config.js", "heroicons.d.ts", "jest.config.js", "postcss.config.js", "./src/setupTests.ts" ]
+  }

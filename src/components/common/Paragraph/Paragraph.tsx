@@ -8,11 +8,14 @@ interface ParagraphProps {
 
 const Paragraph: React.FC<ParagraphProps> = ({
   text,
-  className,
+  className = '',
   dataTestId,
 }) => {
   return (
-    <p className={`text-gray-600 ${className}`} data-testid={dataTestId}>
+    <p
+      className={`text-gray-600 ${className}`}
+      data-testid={dataTestId}
+    >
       {text}
     </p>
   );

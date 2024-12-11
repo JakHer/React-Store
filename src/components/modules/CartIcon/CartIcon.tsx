@@ -2,22 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import store from '../../../store/Store';
+import { ShoppingCartIcon } from '@heroicons/react/24/outline';
+import { useFirebase } from '../../../context/FirebaseContext';
 
 export const CartIcon: React.FC = observer(() => {
+  const { store } = useFirebase();
   const navigate = useNavigate();
   const [animateCart, setAnimateCart] = useState(false);
 
   const handleCartClick = () => {
-    navigate('/chart');
+    navigate('/cart');
   };
 
   const uniqueItemsCount = store.cart.reduce(
-    (uniqueProducts: Set<number>, { product }) => {
+    (uniqueProducts: Set<string>, { product }) => {
       uniqueProducts.add(product.id);
       return uniqueProducts;
     },
-    new Set<number>()
+    new Set<string>()
   ).size;
 
   useEffect(() => {
@@ -30,10 +32,11 @@ export const CartIcon: React.FC = observer(() => {
 
   return (
     <motion.div
-      className="fixed bottom-4 right-4 z-40"
+      className="fixed bottom-11 right-4 z-40"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
+      data-testid="cart-icon-container"
     >
       <motion.button
         className="relative bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center"
@@ -49,7 +52,7 @@ export const CartIcon: React.FC = observer(() => {
           damping: 10,
         }}
       >
-        🛒
+        <ShoppingCartIcon className="h-6 w-6" />
         {uniqueItemsCount > 0 && (
           <span className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full px-2 py-1 text-xs font-bold">
             {uniqueItemsCount}

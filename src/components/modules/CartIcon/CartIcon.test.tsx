@@ -36,11 +36,11 @@ describe('CartIcon', () => {
   it('should show the correct cart item count', () => {
     store.cart = [
       {
-        product: { id: 1, name: 'Product 1', description: '', price: 0 },
+        product: { id: 'test-1', name: 'Product 1', description: '', price: 0 },
         quantity: 0,
       },
       {
-        product: { id: 2, name: 'Product 2', description: '', price: 0 },
+        product: { id: 'test-2', name: 'Product 2', description: '', price: 0 },
         quantity: 0,
       },
     ];
@@ -59,7 +59,7 @@ describe('CartIcon', () => {
     store.cart = [
       {
         product: {
-          id: 1,
+          id: 'test-1',
           name: 'Product 1',
           description: '',
           price: 0,
@@ -76,11 +76,9 @@ describe('CartIcon', () => {
 
     const cartButton = screen.getByTitle('Shopping Cart');
 
-    // Wait for the animation to apply
     await waitFor(() => {
       const transformStyle = cartButton.style.transform;
 
-      // Extract the scale and rotate values from the transform string using regex
       const scaleMatch = transformStyle.match(/scale\(([^)]+)\)/);
       const rotateMatch = transformStyle.match(/rotate\(([^)]+)\)/);
 
@@ -88,33 +86,28 @@ describe('CartIcon', () => {
         const scaleValue = parseFloat(scaleMatch[1]);
         const rotateValue = parseFloat(rotateMatch[1]);
 
-        // Check that the scale value is within a reasonable tolerance range
-        expect(scaleValue).toBeGreaterThanOrEqual(1.15); // Check for 1.2 scale +/- tolerance
+        expect(scaleValue).toBeGreaterThanOrEqual(1.15);
         expect(scaleValue).toBeLessThanOrEqual(1.25);
 
-        // Check that the rotate value is close to 0 (due to animation)
         expect(rotateValue).toBeGreaterThanOrEqual(0);
-        expect(rotateValue).toBeLessThanOrEqual(10); // Assuming the rotate value is small
+        expect(rotateValue).toBeLessThanOrEqual(10);
       }
     });
 
-    // After the animation, check if it resets
     await waitFor(() => {
       const transformStyle = cartButton.style.transform;
 
-      // Check that the transform value returns to scale(1)
       const scaleMatch = transformStyle.match(/scale\(([^)]+)\)/);
       if (scaleMatch) {
         const scaleValue = parseFloat(scaleMatch[1]);
-        expect(scaleValue).toBeCloseTo(1, 2); // Check that it resets to scale(1) with 2 decimal places
+        expect(scaleValue).toBeCloseTo(1, 2);
       }
     });
   });
 
-  it('should navigate to the /chart route when clicked', () => {
-    const navigate = jest.fn(); // This will be the mocked function
+  it('should navigate to the /cart route when clicked', () => {
+    const navigate = jest.fn();
 
-    // Mock the useNavigate hook to return the mocked function
     (useNavigate as jest.Mock).mockReturnValue(navigate);
 
     render(
@@ -126,8 +119,7 @@ describe('CartIcon', () => {
     const cartButton = screen.getByTitle('Shopping Cart');
     fireEvent.click(cartButton);
 
-    // Ensure that navigate is called with the correct path
-    expect(navigate).toHaveBeenCalledWith('/chart');
+    expect(navigate).toHaveBeenCalledWith('/cart');
   });
 
   it('should not show the cart count when the cart is empty', () => {
@@ -138,7 +130,6 @@ describe('CartIcon', () => {
     );
     const cartCount = screen.queryByText('0');
 
-    // Assert that the cart count element is not rendered when the cart is empty
     expect(cartCount).not.toBeInTheDocument();
   });
 });

@@ -1,16 +1,15 @@
 import { observer } from 'mobx-react-lite';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import store from '../../../store/Store';
 import Title from '../../common/Title/Title';
 import Paragraph from '../../common/Paragraph/Paragraph';
 import Button from '../../common/Button/Button';
+import { useFirebase } from '../../../context/FirebaseContext';
 
 export const Modal: React.FC = observer(() => {
+  const { store } = useFirebase();
   const navigate = useNavigate();
-  const location = useLocation();
 
   const lastAddedItem =
     store.cart.length > 0 ? store.cart[store.cart.length - 1] : null;
@@ -27,20 +26,13 @@ export const Modal: React.FC = observer(() => {
     }
   };
 
-  useEffect(() => {
-    if (store.cart.length === 1 && location.pathname === '/store') {
-      store.hasModalShown === true;
-    }
-  }, [store.cart.length, location.pathname]);
-
-  if (!lastAddedItem || !store.hasModalShown || location.pathname !== '/store')
-    return null;
+  if (!lastAddedItem || !store.hasModalShown) return null;
 
   const { product, quantity } = lastAddedItem;
 
-  const navigateToChart = () => {
+  const navigateToCart = () => {
     store.hideModal();
-    navigate('/chart');
+    navigate('/cart');
   };
 
   return (
@@ -53,6 +45,7 @@ export const Modal: React.FC = observer(() => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
           onClick={handleOverlayClick}
+          aria-hidden={!store.hasModalShown}
           data-testid="modal-overlay"
         >
           <motion.div
@@ -62,13 +55,25 @@ export const Modal: React.FC = observer(() => {
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.5 }}
             data-testid="modal-container"
+            role="dialog"
+            aria-labelledby="modal-title"
+            aria-describedby="modal-description"
           >
-            <Title title="Item Added to Cart" dataTestId="modal-title" />
-            <div className="mb-6" data-testid="modal-details">
-              <Title title={product.name} dataTestId="product-name" />
+            <Title
+              title="Item Added to Cart"
+              dataTestId="modal-title"
+            />
+            <div
+              className="mb-6"
+              data-testid="modal-details"
+            >
+              <Title
+                title={product.name}
+                dataTestId="product-name"
+              />
               <Paragraph
                 text={product.description}
-                dataTestId="product-descripton"
+                dataTestId="product-description"
               />
               <Paragraph
                 text={`$${product.price.toFixed(2)} x ${quantity}`}
@@ -83,8 +88,8 @@ export const Modal: React.FC = observer(() => {
             </div>
             <Paragraph
               className="mb-4"
-              dataTestId='"modal-message"'
-              text=" Would you like to continue shopping or go to the store?"
+              dataTestId="modal-message"
+              text="Would you like to continue shopping or go to the store?"
             />
             <div className="flex justify-between">
               <Button
@@ -93,10 +98,10 @@ export const Modal: React.FC = observer(() => {
                 onClick={closeModal}
               />
               <Button
-                text="Go to Chart"
+                text="Go to Cart"
                 className="bg-gray-800 text-white"
-                dataTestId="go-to-chart-btn"
-                onClick={navigateToChart}
+                dataTestId="go-to-cart-btn"
+                onClick={navigateToCart}
               />
             </div>
           </motion.div>

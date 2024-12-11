@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Home } from '../../../pages/Home';
-import { Store } from '../../../pages/Store';
+import { Home } from '../../../pages/Home/Home';
+import { Store } from '../../../pages/Store/Store';
 import { Header } from './Header';
 
 const renderHeader = () => {
@@ -9,8 +9,14 @@ const renderHeader = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/store" element={<Store />} />
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route
+          path="/store"
+          element={<Store />}
+        />
       </Routes>
     </BrowserRouter>
   );

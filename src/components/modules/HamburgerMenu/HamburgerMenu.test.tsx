@@ -11,7 +11,10 @@ const rendersMenu = (props: Partial<HamburgerMenuProps> = {}) => {
 
   render(
     <BrowserRouter>
-      <HamburgerMenu {...defaultProps} {...props} />
+      <HamburgerMenu
+        {...defaultProps}
+        {...props}
+      />
     </BrowserRouter>
   );
 

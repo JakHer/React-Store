@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
-import { AnimatedSection } from '../components/common/AnimatedSection/AnimatedSection';
-import ProductCard from '../components/modules/ProductCard/ProductCard';
+import { AnimatedSection } from '../../components/common/AnimatedSection/AnimatedSection';
+import ProductCard from '../../components/modules/ProductCard/ProductCard';
+import { Modal } from '../../components/modules/Modal/Modal';
 
 export const Store: React.FC = () => {
   return (
     <div data-testid="products-container">
+      <Modal />
       <AnimatedSection
         className="text-center py-10"
         data-testid="products-header"
@@ -29,7 +31,10 @@ export const Store: React.FC = () => {
         </motion.p>
       </AnimatedSection>
 
-      <AnimatedSection className="py-10" data-testid="products-list">
+      <AnimatedSection
+        className="py-10"
+        data-testid="products-list"
+      >
         <ProductCard />
       </AnimatedSection>
     </div>

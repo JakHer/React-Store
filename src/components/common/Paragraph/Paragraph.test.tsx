@@ -11,7 +11,10 @@ describe('Paragraph Component', () => {
 
   test('applies custom className', () => {
     render(
-      <Paragraph text="Custom Styled Paragraph" className="text-lg font-bold" />
+      <Paragraph
+        text="Custom Styled Paragraph"
+        className="text-lg font-bold"
+      />
     );
     const paragraphElement = screen.getByText('Custom Styled Paragraph');
     expect(paragraphElement).toHaveClass('text-gray-600 text-lg font-bold');
@@ -19,7 +22,10 @@ describe('Paragraph Component', () => {
 
   test('renders with data-testid', () => {
     render(
-      <Paragraph text="Test ID Paragraph" dataTestId="paragraph-test-id" />
+      <Paragraph
+        text="Test ID Paragraph"
+        dataTestId="paragraph-test-id"
+      />
     );
     const paragraphElement = screen.getByTestId('paragraph-test-id');
     expect(paragraphElement).toBeInTheDocument();
@@ -33,7 +39,12 @@ describe('Paragraph Component', () => {
   });
 
   test('handles empty text gracefully', () => {
-    render(<Paragraph text="" dataTestId="empty-paragraph" />);
+    render(
+      <Paragraph
+        text=""
+        dataTestId="empty-paragraph"
+      />
+    );
     const paragraphElement = screen.getByTestId('empty-paragraph');
     expect(paragraphElement).toBeInTheDocument();
     expect(paragraphElement).toHaveTextContent('');

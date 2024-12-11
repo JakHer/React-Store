@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { AnimatedSection } from '../components/common/AnimatedSection/AnimatedSection';
-import { FeatureCard } from '../components/modules/FeatureCard/FeatureCard';
+import { AnimatedSection } from '../../components/common/AnimatedSection/AnimatedSection';
+import { FeatureCard } from '../../components/modules/FeatureCard/FeatureCard';
 
 export const Home: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white" data-testid="home-container">
+    <div
+      className=" bg-white"
+      data-testid="home-container"
+    >
       <AnimatedSection
         className="text-center bg-white"
         data-testid="hero-section"
@@ -19,6 +22,7 @@ export const Home: React.FC = () => {
         >
           Welcome to My React Store
         </motion.h1>
+
         <motion.p
           className="text-xl text-gray-600 mb-8"
           initial={{ opacity: 0 }}
@@ -26,8 +30,8 @@ export const Home: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           data-testid="hero-description"
         >
-          Your one-stop shop for all things awesome. Discover products you'll
-          love!
+          Your one-stop shop for all things awesome. Discover products
+          you&apos;ll love!
         </motion.p>
         <motion.div
           initial={{ scale: 0.8 }}
@@ -97,7 +101,7 @@ export const Home: React.FC = () => {
         >
           <Link
             to="/store"
-            className="bg-yellow-500 text-white py-3 px-6 rounded-full text-lg hover:bg-yellow-600 transition-all duration-200 ease-in-out"
+            className="bg-gray-800 text-white py-3 px-6 rounded-full text-lg hover:bg-gray-700 transition-all duration-200 ease-in-out"
             data-testid="cta-button"
           >
             Browse Our Store

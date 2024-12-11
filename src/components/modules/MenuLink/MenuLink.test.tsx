@@ -20,7 +20,10 @@ const rendersLink = (props: Partial<MenuLinkProps> = {}) => {
 
   render(
     <BrowserRouter>
-      <MenuLink {...defaultProps} {...props} />
+      <MenuLink
+        {...defaultProps}
+        {...props}
+      />
     </BrowserRouter>
   );
 
@@ -37,7 +40,10 @@ describe('MenuLink Component', () => {
   test('Renders link with correct text and attributes', () => {
     render(
       <BrowserRouter>
-        <MenuLink to="/store" text="Store" />
+        <MenuLink
+          to="/store"
+          text="Store"
+        />
       </BrowserRouter>
     );
 
@@ -51,7 +57,10 @@ describe('MenuLink Component', () => {
 
     render(
       <BrowserRouter>
-        <MenuLink to="/store" text="Store" />
+        <MenuLink
+          to="/store"
+          text="Store"
+        />
       </BrowserRouter>
     );
 
@@ -65,7 +74,10 @@ describe('MenuLink Component', () => {
 
     render(
       <BrowserRouter>
-        <MenuLink to="/store" text="Store" />
+        <MenuLink
+          to="/store"
+          text="Store"
+        />
       </BrowserRouter>
     );
 
