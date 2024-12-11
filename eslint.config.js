@@ -9,7 +9,7 @@ const compat = new FlatCompat();
 
 export default [
   {
-    files: ['src/**/*.{js,ts,jsx,tsx}'],
+    files: ['src/**/*.{js,ts,jsx,tsx}', './package.json'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -76,8 +76,6 @@ export default [
           ],
         },
       ],
-
-      // React version setting
       'react/jsx-uses-react': 'off',
     },
     settings: {
