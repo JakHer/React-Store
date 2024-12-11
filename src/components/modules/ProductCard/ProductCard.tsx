@@ -9,6 +9,7 @@ import Loader from '../../common/Loader/Loader';
 import EmptyState from '../../common/EmptyState/EmptyState';
 import ProductError from '../../common/ProductError/ProductError';
 import { Product } from './ProductCard.types';
+import { formatCurrency } from '../../../utils/formatCurrency';
 
 const ProductCard: React.FC = observer(() => {
   const { store } = useFirebase();
@@ -74,7 +75,7 @@ const ProductCard: React.FC = observer(() => {
                 dataTestId={`product-paragraph-${product.description}`}
               />
               <Paragraph
-                text={`$${product.price.toFixed(2)}`}
+                text={`$${formatCurrency(product.price)}`}
                 className="text-yellow-500 text-lg font-bold mt-4"
                 dataTestId={`product-price-${product.price}`}
               />

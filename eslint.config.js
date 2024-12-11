@@ -28,7 +28,7 @@ export default [
         tsconfigRootDir: './',
       },
     },
-    ignores: ['node_modules', 'dist', 'build', 'public'],
+    ignores: ['node_modules', 'dist', 'build', 'public', '.github'],
     plugins: {
       'react': reactPlugin,
       'prettier': prettierPlugin,

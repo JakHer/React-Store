@@ -6,6 +6,7 @@ import Title from '../../common/Title/Title';
 import Paragraph from '../../common/Paragraph/Paragraph';
 import Button from '../../common/Button/Button';
 import { useFirebase } from '../../../context/FirebaseContext';
+import { formatCurrency } from '../../../utils/formatCurrency';
 
 export const Modal: React.FC = observer(() => {
   const { store } = useFirebase();
@@ -76,12 +77,12 @@ export const Modal: React.FC = observer(() => {
                 dataTestId="product-description"
               />
               <Paragraph
-                text={`$${product.price.toFixed(2)} x ${quantity}`}
+                text={`$${formatCurrency(product.price)} x ${quantity}`}
                 className="text-yellow-500 font-bold"
                 dataTestId="product-price"
               />
               <Paragraph
-                text={`Subtotal: $${(product.price * quantity).toFixed(2)}`}
+                text={`Subtotal: $${formatCurrency(product.price * quantity)}`}
                 className="font-bold mt-2"
                 dataTestId="subtotal"
               />

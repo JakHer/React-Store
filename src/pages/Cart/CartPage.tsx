@@ -8,6 +8,7 @@ import {
   ArrowRightIcon,
 } from '@heroicons/react/24/outline';
 import { useFirebase } from '../../context/FirebaseContext';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 const CartPage: React.FC = observer(() => {
   const { store } = useFirebase();
@@ -112,7 +113,7 @@ const CartPage: React.FC = observer(() => {
                       data-testid={`price-${product.id}`}
                       className="text-lg font-semibold text-gray-900 ml-4"
                     >
-                      ${(product.price * quantity).toFixed(2)}
+                      ${formatCurrency(product.price * quantity)}
                     </span>
                     <button
                       onClick={() => handleRemoveItem(product.id)}
@@ -133,7 +134,7 @@ const CartPage: React.FC = observer(() => {
                   data-testid="cart-total"
                   className="text-2xl font-semibold text-gray-900"
                 >
-                  Total: ${store.cartTotal.toFixed(2)}
+                  Total: ${formatCurrency(store.cartTotal)}
                 </h2>
               </div>
               <div className="flex space-x-4">
