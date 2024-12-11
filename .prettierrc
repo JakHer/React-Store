@@ -8,7 +8,7 @@
   "quoteProps": "consistent",
   "arrowParens": "always",
   "bracketSpacing": true,
-  "jsxBracketSameLine": true,
+  "jsxBracketSameLine": false,
   "htmlWhitespaceSensitivity": "css",
   "proseWrap": "always",
   "parser": "typescript",
